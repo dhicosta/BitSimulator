@@ -13,8 +13,5 @@ class InstrucaoController():
             return False
     def AdicionarCommando(self, Commando):
         Data = self.__connectedDbSqlite.GetNameInstruction(Commando)
-        self.__memoriaprincipal["Instrucao"] = [Data[1], Data[2], Data[3]]
-        print(self.__memoriaprincipal)
-
-ola = InstrucaoController()
-ola.AdicionarCommando("LOAD")
+        DictValue = self.__memoriaprincipal["Instrucao"]
+        DictValue.append([Data[0][1], Data[0][2], Data[0][3]])

@@ -3,7 +3,7 @@ import os
 
 class PersistenceDbSqlite():
     def __init__(self):
-        self.__Connection = sqlite3.connect("./Data/Instrucoes.db")
+        self.__Connection = sqlite3.connect("./Database/Instrucoes.db")
         self.__CursorDb = self.__Connection.cursor()
     def CloseConnection(self):
         self.__Connection.close()
