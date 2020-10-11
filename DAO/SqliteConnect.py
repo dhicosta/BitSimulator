@@ -1,21 +1,17 @@
 import sqlite3
+import os
 
 class PersistenceDbSqlite():
-    def __init__(self, NomeBanco):
-        self.NomeBanco = NomeBanco
-        self.__Connection = sqlite3.connect(f'./Database/{NomeBanco}.db')
+    def __init__(self):
+        self.__Connection = sqlite3.connect("./Data/Instrucoes.db")
         self.__CursorDb = self.__Connection.cursor()
-
-    def CreateDb(self, CommandsCreateDb):
-        self.__CursorDb.execute(CommandsCreateDb)
+    def CloseConnection(self):
         self.__Connection.close()
-
-StringCreate = """
-CREATE TABLE Instrucoes (
-        id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-        Instrucao TEXT NOT NULL,
-        Operando TEXT NOT NULL
-);
-"""
-ola = PersistenceDbSqlite("instrucoes")
-ola.CreateDb(StringCreate)
+    def GetAll(self):
+        self.__CursorDb.execute("SELECT * FROM instrucoes")
+        DataReturn = self.__CursorDb.fetchall()
+        return DataReturn
+    def GetNameInstruction(self, Name):
+        self.__CursorDb.execute(f"SELECT * FROM Instrucoes WHERE Instrucao='{Name}'")
+        DataEspecifiqReturn = self.__CursorDb.fetchall()
+        return DataEspecifiqReturn
