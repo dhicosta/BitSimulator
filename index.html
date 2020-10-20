@@ -29,7 +29,7 @@
               </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
-                <button class="btn  btn-success btn-sm mr-3" type="submit">Iniciar</button>
+                <button class="btn  btn-success btn-sm mr-3" type="submit" onclick="IniciarPercusoDeInstrucoes()">Iniciar</button>
               <input class="form-control mr-sm-2" type="search" placeholder="Inserir Comando" aria-label="Inserir Comando">
               <button class="btn  btn-success btn-sm mr-3" type="submit">Adicionar</button>
               <button class="btn  btn-success btn-sm mr-3" type="submit">Aleatorio</button>
@@ -41,12 +41,13 @@
             <div class="row mt-5" id="Animacoes">
                 <div class="col-md-9 pb-4">
                     <svg width="100%" height="903" ng-class="'status' + ctrl.sim.status">
+                        <!--Barramentos internos e externos -->
                         <rect x="0" y="0" width="4" height="100%"></rect>
                         <rect x="0" y="0" width="1200" height="4"></rect>
                         <rect x="1200" y="0" width="4" height="100"></rect>
                         <rect x="0" y="900" width="170" height="4"></rect>
                         <rect x="1200" y="203" width="4" height="200"></rect>
-                        <rect x="1200" y="203" width="100" height="4"></rect>
+                        <rect x="1200" y="203" width="100%" height="4"></rect>
                         <rect x="170" y="800" width="4" height="100"></rect>
                         <rect x="95" y="450" width="4" height="150"></rect>
                         <rect x="160" y="300" width="4" height="150"></rect>
@@ -57,9 +58,25 @@
                         <rect x="600" y="500" width="4" height="100"></rect>
                         <rect x="95" y="450" width="650" height="4"></rect>
                         <rect x="740" y="450" width="4" height="150"></rect>
-                        <rect x="1200" y="100" width="200" height="4"></rect>
+                        <rect x="1200" y="100" width="100%" height="4"></rect>
                         <rect x="200" y="700" width="300" height="4"></rect>
-
+                        <rect x="0" y="250" width="100" height="4"></rect>
+                        <rect x="300" y="250" width="300" height="4"></rect>
+                        <rect x="700" y="250" width="100" height="4"></rect>
+                        <rect x="750" y="250" width="4" height="150"></rect>
+                        <rect x="700" y="95" width="100" height="4"></rect>
+                        <rect x="750" y="95" width="4" height="156"></rect>
+                        <rect x="610" y="0" width="4" height="50"></rect>
+                        <rect x="910" y="0" width="4" height="50"></rect>
+                        <rect x="910" y="300" width="4" height="100"></rect>
+                        <rect x="610" y="300" width="4" height="100"></rect>
+                        <rect x="150" y="70" width="500" height="4"></rect>
+                        <rect x="85" y="0" width="4" height="100"></rect>
+                        <rect x="700" y="700" width="500" height="4"></rect>
+                        <rect x="1200" y="600" width="4" height="100"></rect>
+                        <rect x="1200" y="600" width="100%" height="4"></rect>
+                        <circle id="Objeto" cx="1200" cy="100" r="10" stroke="green" stroke-width="4" fill="yellow" />
+                        <!--Componentes da estrutura CPU: Registradores, UC, ULA -->
                         <polygon class="StyleFont" points=" 500 200, 700 200, 700 300, 500 300"></polygon>
                         <polygon class="StyleFont" points=" 100 200, 300 200, 300 300, 100 300"></polygon>
                         <polygon class="StyleFont" points=" 50 50, 150 50, 150 100, 50 100"></polygon>
@@ -69,42 +86,52 @@
                         <polygon class="StyleFont" points="  500 50, 700 50, 700 150, 500, 150"></polygon>
                         <polygon class="StyleFont" points="  800 50, 1000 50, 1000 150, 800, 150"></polygon>
 
-
                         <polygon class="StyleFont" points=" 500 600, 800 600, 800 800, 500 800"></polygon>
                         <polygon class="StyleFont" points=" 40 600, 150 600, 175 700, 200 600, 300 600, 260 800, 90 800"></polygon>
                     </svg>
                 </div>
                 <div class="col-md-3">
-                    <table class="table table-striped">
-                        <thead id="IdentificadoresDeColunas" width="100">
-                            <tr>
-                                <th scope="col">Endereço</th>
-                                <th scope="col">Instruções</th>
-                            </tr>
-                        </thead>
+                    <div class="row">
+                        <div class="col-md-0">
+                            <div id="SeparatorRam">
+                                <svg width="10" height="700">
+                                    <rect x="0" y="0" width="4" height="100%"></rect>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <table class="table table-striped">
+                                <thead id="IdentificadoresDeColunas" width="100">
+                                    <tr>
+                                        <th scope="col">Endereço</th>
+                                        <th scope="col">Instruções</th>
+                                    </tr>
+                                </thead>
 
-                        <tbody id="CorpoDeDadosEInstrucoes">
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>instrução</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-striped">
-                        <thead id="IdentificadoresDeColunas" width="100">
-                            <tr>
-                                <th scope="col">Endereço</th>
-                                <th scope="col">Dados</th>
-                            </tr>
-                        </thead>
+                                <tbody id="CorpoDeDadosEInstrucoes">
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td>instrução</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table class="table table-striped">
+                                <thead id="IdentificadoresDeColunas" width="100">
+                                    <tr>
+                                        <th scope="col">Endereço</th>
+                                        <th scope="col">Dados</th>
+                                    </tr>
+                                </thead>
 
-                        <tbody id="CorpoDeDadosEInstrucoes">
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Dado</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                                <tbody id="CorpoDeDadosEInstrucoes">
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td>Dado</td>
+                                    </tr>
+                                </tbody>
+                            </table>      
+                        </div>
+                    </div>
                 </div>
             </div>
    </div>        
