@@ -29,7 +29,7 @@
               </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
-                <button class="btn  btn-success btn-sm mr-3" type="submit" onclick="IniciarPercusoDeInstrucoes()">Iniciar</button>
+                <li class="botaoiniciar btn  btn-success btn-sm mr-3" onclick="IniciarPercusoDeInstrucoes()">Iniciar</li>
               <input class="form-control mr-sm-2" type="search" placeholder="Inserir Comando" aria-label="Inserir Comando">
               <button class="btn  btn-success btn-sm mr-3" type="submit">Adicionar</button>
               <button class="btn  btn-success btn-sm mr-3" type="submit">Aleatorio</button>
@@ -39,7 +39,7 @@
     </div>
     <div class="container-fluid">
             <div class="row mt-5" id="Animacoes">
-                <div class="col-md-9 pb-4">
+                <div class="col-md-9 pt-3 pb-4">
                     <svg width="100%" height="903" ng-class="'status' + ctrl.sim.status">
                         <!--Barramentos internos e externos -->
                         <rect x="0" y="0" width="4" height="100%"></rect>
@@ -75,8 +75,14 @@
                         <rect x="700" y="700" width="500" height="4"></rect>
                         <rect x="1200" y="600" width="4" height="100"></rect>
                         <rect x="1200" y="600" width="100%" height="4"></rect>
-                        <circle id="Objeto" cx="1200" cy="100" r="10" stroke="green" stroke-width="4" fill="yellow" />
-                        <!--Componentes da estrutura CPU: Registradores, UC, ULA -->
+                        <circle id="object" cx="1200" cy="100" r="10" stroke="green" stroke-width="4" fill="yellow" />
+                        <script type="text/javascript">
+                            var intervalosDeChamandaDeFuncao;
+                            var ContadorDeEspacoPercorrido = 0;
+                            var VelocidadeDeChamadaDeFuncao = 500;
+                            var ObjectMov = document.getElementById('object');
+                        </script>
+                            <!--Componentes da estrutura CPU: Registradores, UC, ULA -->
                         <polygon class="StyleFont" points=" 500 200, 700 200, 700 300, 500 300"></polygon>
                         <polygon class="StyleFont" points=" 100 200, 300 200, 300 300, 100 300"></polygon>
                         <polygon class="StyleFont" points=" 50 50, 150 50, 150 100, 50 100"></polygon>
