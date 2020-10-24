@@ -83,7 +83,7 @@
 		</div>
 		<div class="container-fluid">
 			<div class="row mt-5" id="Animacoes">
-				<div class="col-md-9 pt-3 pb-4">
+				<div class="col-md-9 pt-3 pb-4" style="position: relative">
 					<svg
 						class="JogoTela"
 						width="100%"
@@ -124,6 +124,7 @@
 						<rect id="Rct31" x="700" y="700" width="500" height="4"></rect>
 						<rect id="Rct32" x="1200" y="600" width="4" height="100"></rect>
 						<rect id="Rct33" x="1200" y="600" width="100%" height="4"></rect>
+
 						<!--Componentes da estrutura CPU: Registradores, UC, ULA -->
 						<polygon
 							class="StyleFont"
@@ -140,6 +141,8 @@
 							id="Component3"
 							points=" 50 50, 150 50, 150 100, 50 100"
 						></polygon>
+						<text x="70" y="80" id="text3" class="font-ajust">PC</text>
+						<text x="105" y="80" id="input3"></text>
 						<polygon
 							class="StyleFont"
 							id="Component4"
@@ -182,7 +185,6 @@
 										<th scope="col">Instruções</th>
 									</tr>
 								</thead>
-
 								<tbody id="CorpoDeDadosEInstrucoes">
 									<tr>
 										<th scope="row">1</th>
@@ -244,3 +246,7 @@
 		></script>
 	</body>
 </html>
+
+<div>
+	<div id="interna" class=""></div>
+</div>
