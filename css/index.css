@@ -30,3 +30,9 @@ p {
 .btn-success {
 	border-color: white;
 }
+.teste {
+	border-color: slateblue;
+	background-color: violet;
+	width: 30%;
+	align-items: center;
+}
