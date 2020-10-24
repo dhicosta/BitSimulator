@@ -4,7 +4,7 @@
     
     <meta charset="utf-8" lang="pt-BR" />
     <meta name="accept-language" content="pt-BR" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>Exemplo site</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
@@ -40,57 +40,64 @@
     <div class="container-fluid">
             <div class="row mt-5" id="Animacoes">
                 <div class="col-md-9 pt-3 pb-4">
-                    <svg width="100%" height="903" ng-class="'status' + ctrl.sim.status">
+                    <svg class="JogoTela" width="100%" height="903" ng-class="'status' + ctrl.sim.status">
                         <!--Barramentos internos e externos -->
-                        <rect x="0" y="0" width="4" height="100%"></rect>
-                        <rect x="0" y="0" width="1200" height="4"></rect>
-                        <rect x="1200" y="0" width="4" height="100"></rect>
-                        <rect x="0" y="900" width="170" height="4"></rect>
-                        <rect x="1200" y="203" width="4" height="200"></rect>
-                        <rect x="1200" y="203" width="100%" height="4"></rect>
-                        <rect x="170" y="800" width="4" height="100"></rect>
-                        <rect x="95" y="450" width="4" height="150"></rect>
-                        <rect x="160" y="300" width="4" height="150"></rect>
-                        <rect x="270" y="300" width="4" height="200"></rect>
-                        <rect x="250" y="500" width="4" height="100"></rect>
-                        <rect x="0" y="400" width="1200" height="4"></rect>
-                        <rect x="251" y="500" width="350" height="4"></rect>
-                        <rect x="600" y="500" width="4" height="100"></rect>
-                        <rect x="95" y="450" width="650" height="4"></rect>
-                        <rect x="740" y="450" width="4" height="150"></rect>
-                        <rect x="1200" y="100" width="100%" height="4"></rect>
-                        <rect x="200" y="700" width="300" height="4"></rect>
-                        <rect x="0" y="250" width="100" height="4"></rect>
-                        <rect x="300" y="250" width="300" height="4"></rect>
-                        <rect x="700" y="250" width="100" height="4"></rect>
-                        <rect x="750" y="250" width="4" height="150"></rect>
-                        <rect x="700" y="95" width="100" height="4"></rect>
-                        <rect x="750" y="95" width="4" height="156"></rect>
-                        <rect x="610" y="0" width="4" height="50"></rect>
-                        <rect x="910" y="0" width="4" height="50"></rect>
-                        <rect x="910" y="300" width="4" height="100"></rect>
-                        <rect x="610" y="300" width="4" height="100"></rect>
-                        <rect x="150" y="70" width="500" height="4"></rect>
-                        <rect x="85" y="0" width="4" height="100"></rect>
-                        <rect x="700" y="700" width="500" height="4"></rect>
-                        <rect x="1200" y="600" width="4" height="100"></rect>
-                        <rect x="1200" y="600" width="100%" height="4"></rect>
-                        <circle id="object" cx="1200" cy="100" r="10" stroke="green" stroke-width="4" fill="yellow" />
+                        <rect id="Rct1" x="0" y="0" width="4" height="100%"></rect>
+                        <rect id="Rct2" x="0" y="0" width="1200" height="4"></rect>
+                        <rect id="Rct3" x="1200" y="0" width="4" height="100"></rect>
+                        <rect id="Rct4" x="0" y="900" width="170" height="4"></rect>
+                        <rect id="Rct5" x="1200" y="203" width="4" height="200"></rect>
+                        <rect id="Rct6" x="1200" y="203" width="100%" height="4"></rect>
+                        <rect id="Rct7" x="170" y="800" width="4" height="100"></rect>
+                        <rect id="Rct8" x="95" y="450" width="4" height="150"></rect>
+                        <rect id="Rct9" x="160" y="300" width="4" height="150"></rect>
+                        <rect id="Rct10" x="270" y="300" width="4" height="200"></rect>
+                        <rect id="Rct11" x="250" y="500" width="4" height="100"></rect>
+                        <rect id="Rct12" x="0" y="400" width="1200" height="4"></rect>
+                        <rect id="Rct13" x="251" y="500" width="350" height="4"></rect>
+                        <rect id="Rct14" x="600" y="500" width="4" height="100"></rect>
+                        <rect id="Rct15" x="95" y="450" width="650" height="4"></rect>
+                        <rect id="Rct16" x="740" y="450" width="4" height="150"></rect>
+                        <rect id="Rct17" x="1200" y="100" width="100%" height="4"></rect>
+                        <rect id="Rct18" x="200" y="700" width="300" height="4"></rect>
+                        <rect id="Rct19" x="0" y="250" width="100" height="4"></rect>
+                        <rect id="Rct20" x="300" y="250" width="300" height="4"></rect>
+                        <rect id="Rct21" x="700" y="250" width="100" height="4"></rect>
+                        <rect id="Rct22" x="785" y="250" width="4" height="150"></rect>
+                        <rect id="Rct23" x="600" y="250" width="200" height="4"></rect>
+                        <rect id="Rct24" x="650" y="75" width="4" height="330"></rect>
+                        <rect id="Rct25" x="510" y="0" width="4" height="50"></rect>
+                        <rect id="Rct26" x="810" y="0" width="4" height="50"></rect>
+                        <rect id="Rct27" x="110" y="0" width="4" height="50"></rect>
+                        <rect id="Rct28" x="510" y="300" width="4" height="100"></rect>
+                        <rect id="Rct29" x="150" y="70" width="600" height="4"></rect>
+                        <rect id="Rct30" x="85" y="0" width="4" height="100"></rect>
+                        <rect id="Rct31" x="700" y="700" width="500" height="4"></rect>
+                        <rect id="Rct32" x="1200" y="600" width="4" height="100"></rect>
+                        <rect id="Rct33" x="1200" y="600" width="100%" height="4"></rect>
                         <script type="text/javascript">
+                            var elements = document.getElementsByClassName("JogoTela");
+                            var valorDimunuirComponentes = 10;
+                            for(var contador = 0; contador <= (elements[0].children.length); contador++) {
+                                if (elements[0].children[contador].nodeName == "rect") 
+                                {
+                                    console.log(elements[0].children[contador].x.animVal.value);   
+                                }
+                            }
+
                             var intervalosDeChamandaDeFuncao;
                             var ContadorDeEspacoPercorrido = 0;
                             var VelocidadeDeChamadaDeFuncao = 500;
                             var ObjectMov = document.getElementById('object');
                         </script>
                             <!--Componentes da estrutura CPU: Registradores, UC, ULA -->
-                        <polygon class="StyleFont" points=" 500 200, 700 200, 700 300, 500 300"></polygon>
-                        <polygon class="StyleFont" points=" 100 200, 300 200, 300 300, 100 300"></polygon>
-                        <polygon class="StyleFont" points=" 50 50, 150 50, 150 100, 50 100"></polygon>
-                        <polygon class="StyleFont" points=" 500 200, 700 200, 700 300, 500 300"></polygon>
-                        <polygon class="StyleFont" points=" 800 200, 1000 200, 1000 300,800 300"></polygon>
-                        <polygon class="StyleFont" points=" 800 200, 1000 200, 1000 300,800 300"></polygon>
-                        <polygon class="StyleFont" points="  500 50, 700 50, 700 150, 500, 150"></polygon>
-                        <polygon class="StyleFont" points="  800 50, 1000 50, 1000 150, 800, 150"></polygon>
+                        <polygon class="StyleFont" id="Component1" points=" 400 200, 600 200, 600 300, 400 300"></polygon>
+                        <polygon class="StyleFont" id="Component2" points=" 100 200, 300 200, 300 300, 100 300"></polygon>
+                        <polygon class="StyleFont" id="Component3" points=" 50 50, 150 50, 150 100, 50 100"></polygon>
+                        <polygon class="StyleFont" id="Component4" points=" 700 200, 900 200, 900 300,700 300"></polygon>
+                        
+                        <polygon class="StyleFont" points="  400 50, 600 50, 600 150, 400, 150"></polygon>
+                        <polygon class="StyleFont" points="  700 50, 900 50, 900 150, 700, 150"></polygon>
 
                         <polygon class="StyleFont" points=" 500 600, 800 600, 800 800, 500 800"></polygon>
                         <polygon class="StyleFont" points=" 40 600, 150 600, 175 700, 200 600, 300 600, 260 800, 90 800"></polygon>
