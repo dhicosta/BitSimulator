@@ -2,10 +2,40 @@ var Regist = [];
 var IsRegistradorContar = 0;
 var contadorDeEnderecosCompletos = 0;
 var ValorDeCadaTabela;
+var contadorDePassos = 0;
+var EnderoBusca = 1;
 
 function IniciarPercusoDeInstrucoes() {
-	///intervalosDeChamandaDeFuncao = setInterval(game, VelocidadeDeChamadaDeFuncao);
+	intervalosDeChamandaDeFuncao = setInterval(CoresDeCaixas, 500);
 }
+
+function CoresDeCaixas() {
+	var corDePC = document.getElementById('Component3');
+	var corDaUC = document.getElementById('UC');
+	corDePC.style.fill = 'green';
+	contadorDePassos += 1;
+	console.log(contadorDePassos); 
+	if(contadorDePassos > 3) {
+		corDePC.style.fill = 'white';
+		if (contadorDePassos > 6 && contadorDePassos < 10) 
+		{
+			corDaUC.style.fill = 'green';
+		} else {
+			corDaUC.style.fill = 'white';
+			if ( 10 < contadorDePassos && contadorDePassos < 13)
+			{
+				TrocarCorPorEndereco(EnderoBusca, 'green');
+			} else {
+				if (contadorDePassos > 14) 
+				{
+					TrocarCorPorEndereco(EnderoBusca, 'white');
+				}
+			}
+		}
+	}
+}
+
+
 function AdicionarComando() {
 	var valorDeInput = document.getElementById('EntradaDeInstrucao').value;
 	var InstrucaoDecomposta = valorDeInput.split(" ");
@@ -168,6 +198,10 @@ function AdicionarComandoNaMemoria(id, Entrada)
 		document.getElementById("td" + id).innerText = Entrada;
 	}
 }
-
+function TrocarCorPorEndereco(id, cor) 
+{
+	ValorDeCadaTabela = document.getElementById("tr" + id);
+	ValorDeCadaTabela.style.backgroundColor = cor;
+}
 
 function ExecutarPercursoEmAleatorio() {}
