@@ -38,3 +38,12 @@ p {
 .WhiteColorImplement {
 	background-color: white;
 }
+
+.row {
+	margin-top: 50px;
+}
+
+td,
+th {
+	background-color: white;
+}
