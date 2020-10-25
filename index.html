@@ -58,7 +58,7 @@
 							>
 						</li>
 					</ul>
-					<form class="form-inline my-2 my-lg-0">
+					<form class="form-inline my-2 my-lg-0" id="Formulario">
 						<li
 							class="botaoiniciar btn btn-success btn-sm mr-3"
 							onclick="IniciarPercusoDeInstrucoes()"
@@ -66,20 +66,21 @@
 							Iniciar
 						</li>
 						<input
+                            id="EntradaDeInstrucao"
 							class="form-control mr-sm-2"
-							type="text"
-							id="entrada"
+							type="search"
 							placeholder="Inserir Comando"
 							aria-label="Inserir Comando"
 						/>
-						<button
-							class="btn btn-success btn-sm mr-3"
-							type="button"
-							onclick="AdicionarComandoNaMemoria()"
-						>
-							Adicionar
+						<li
+                            class="btn btn-success btn-sm mr-3"
+                            onclick="AdicionarComando()"
+                        >
+                            Adicionar
+                        </li>
+						<button class="btn btn-success btn-sm mr-3">
+							Aleatorio
 						</button>
-						<button class="btn btn-success btn-sm mr-3">Aleatorio</button>
 					</form>
 				</div>
 			</nav>

@@ -1,5 +1,8 @@
 var Regist = [];
 var IsRegistradorContar = 0;
+var contadorDeEnderecosCompletos = 0;
+var ValorDeCadaTabela;
+
 function IniciarPercusoDeInstrucoes() {
 	///intervalosDeChamandaDeFuncao = setInterval(game, VelocidadeDeChamadaDeFuncao);
 }
@@ -7,98 +10,105 @@ function AdicionarComando() {
 	var valorDeInput = document.getElementById('EntradaDeInstrucao').value;
 	var InstrucaoDecomposta = valorDeInput.split(" ");
 	var contadorDeCond = 0;
-
-	for(var contador = 0; contador < Instrucoes.length; contador++) {
-		contadorDeCond += 1;
-		if(3 <= InstrucaoDecomposta.length <= 4) 
-		{
-			if(InstrucaoDecomposta[0] == Instrucoes[contador]) 
+	if (contadorDeEnderecosCompletos != 20) {
+		for(var contador = 0; contador < Instrucoes.length; contador++) {
+			contadorDeCond += 1;
+			if(3 <= InstrucaoDecomposta.length <= 4) 
 			{
-				if ((InstrucaoDecomposta.length == 4) && ((InstrucaoDecomposta[0] == 'ADD') || (InstrucaoDecomposta[0] == 'SUB') || (InstrucaoDecomposta[0] == 'DIV'))) 
-				{	
-					Regist = [];
-					Regist.push(InstrucaoDecomposta[1]);
-					Regist.push(InstrucaoDecomposta[2]);
-					Regist.push(InstrucaoDecomposta[3]);
+				if(InstrucaoDecomposta[0] == Instrucoes[contador]) 
+				{
+					if ((InstrucaoDecomposta.length == 4) && ((InstrucaoDecomposta[0] == 'ADD') || (InstrucaoDecomposta[0] == 'SUB') || (InstrucaoDecomposta[0] == 'DIV'))) 
+					{	
+						Regist = [];
+						Regist.push(InstrucaoDecomposta[1]);
+						Regist.push(InstrucaoDecomposta[2]);
+						Regist.push(InstrucaoDecomposta[3]);
 
-					for (var contador = 0; contador < Registradores.length; contador++) 
-					{
-						for (var contadorRegistrador = 0; contadorRegistrador < Regist.length; contadorRegistrador++) 
+						for (var contador = 0; contador < Registradores.length; contador++) 
 						{
-							if (Registradores[contador] == Regist[contadorRegistrador]) 
+							for (var contadorRegistrador = 0; contadorRegistrador < Regist.length; contadorRegistrador++) 
 							{
-								IsRegistradorContar += 1;
+								if (Registradores[contador] == Regist[contadorRegistrador]) 
+								{
+									IsRegistradorContar += 1;
+								}
 							}
 						}
-					}
-					if (IsRegistradorContar == 3) 
-					{
-						var AlertErrorColor = document.getElementById('EntradaDeInstrucao');
-						AlertErrorColor.style="border:2px solid green;";
-						InstrucoesDeEntrada.push(valorDeInput);
-						console.log(InstrucoesDeEntrada);
-						//implementar função para adicionar commando
-						IsRegistradorContar = 0;
-						contadorDeCond = 0;
-						break;	
-					} else {
-						var AlertErrorColor = document.getElementById('EntradaDeInstrucao');
-						AlertErrorColor.style="border:2px solid red;";
-						alert("Ouve um erro na sua entrada, por favor revise o seu dado/instrução e adicione novamente!!");
-						contadorDeCond = 0;
-						IsRegistradorContar = 0;
-						break;
-					}
-
-				}
-				else {
-					if((InstrucaoDecomposta.length == 3) && ((InstrucaoDecomposta[0] == 'LOAD') || (InstrucaoDecomposta[0] == 'STO'))) 
-					{
-						var IsEnderecoContar = 0;
-						for (var contador = 0 ; contador < EnderecoInstrucaoDado.length; contador++) 
+						if (IsRegistradorContar == 3) 
 						{
-							if (InstrucaoDecomposta[1] == EnderecoInstrucaoDado[contador]) 
-							{
-								Regist = [];
-					
-								Regist.push(InstrucaoDecomposta[1]);
-								Regist.push(InstrucaoDecomposta[2]);
+							var AlertErrorColor = document.getElementById('EntradaDeInstrucao');
+							AlertErrorColor.style="border:2px solid green;";
+							InstrucoesDeEntrada.push(valorDeInput);
+							contadorDeEnderecosCompletos += 1;
+							AdicionarComandoNaMemoria(contadorDeEnderecosCompletos, valorDeInput);
+							IsRegistradorContar = 0;
+							contadorDeCond = 0;
+							break;	
+						} else {
+							var AlertErrorColor = document.getElementById('EntradaDeInstrucao');
+							AlertErrorColor.style="border:2px solid red;";
+							alert("Ouve um erro na sua entrada, por favor revise o seu dado/instrução e adicione novamente!!");
+							contadorDeCond = 0;
+							IsRegistradorContar = 0;
+							break;
+						}
 
-								for (var contador = 0; contador < Registradores.length; contador++) 
+					}
+					else {
+						if((InstrucaoDecomposta.length == 3) && ((InstrucaoDecomposta[0] == 'LOAD') || (InstrucaoDecomposta[0] == 'STO'))) 
+						{
+							for (var contador = 0 ; contador < EnderecoInstrucaoDado.length; contador++) 
+							{
+								if (InstrucaoDecomposta[1] == EnderecoInstrucaoDado[contador]) 
 								{
-									for (var contadorRegistrador = 0; contadorRegistrador < Regist.length; contadorRegistrador++) 
+									IsRegistradorContar += 1;
+									Regist = [];
+									Regist.push(InstrucaoDecomposta[1]);
+									Regist.push(InstrucaoDecomposta[2]);
+
+									for (var contador = 0; contador < Registradores.length; contador++) 
 									{
-										if (Registradores[2] == Regist[contadorRegistrador]) 
+										if (Registradores[contador] == Regist[1]) 
 										{
 											IsRegistradorContar += 1;
 										}
 									}
+									if (IsRegistradorContar == 2) 
+									{
+										var AlertErrorColor = document.getElementById('EntradaDeInstrucao');
+										AlertErrorColor.style="border:2px solid green;";
+										InstrucoesDeEntrada.push(valorDeInput);
+										contadorDeEnderecosCompletos += 1;
+										console.log(InstrucoesDeEntrada);
+										AdicionarComandoNaMemoria(contadorDeEnderecosCompletos, valorDeInput);
+										IsRegistradorContar = 0
+										contadorDeCond = 0;
+										IsEnderecoContar = 0;
+										break;	
+									} else {
+										var AlertErrorColor = document.getElementById('EntradaDeInstrucao');
+										AlertErrorColor.style="border:2px solid red;";
+										alert("Ouve um erro na sua entrada, por favor revise o seu dado/instrução e adicione novamente!!");
+										contadorDeCond = 0;
+										IsRegistradorContar = 0;
+										IsEnderecoContar = 0;
+										break;
+									}
+								} else  {
+									IsEnderecoContar += 1;
 								}
-								if (IsRegistradorContar != Regist.length) {
-									var AlertErrorColor = document.getElementById('EntradaDeInstrucao');
-									AlertErrorColor.style="border:2px solid green;";
-									InstrucoesDeEntrada.push(valorDeInput);
-									console.log(InstrucoesDeEntrada);
-									//implementar função para adicionar commando
-									IsRegistradorContar = 0
-									contadorDeCond = 0;
-									var IsEnderecoContar = 0;
-									break;	
-								} else {
-									var AlertErrorColor = document.getElementById('EntradaDeInstrucao');
-									AlertErrorColor.style="border:2px solid red;";
-									alert("Ouve um erro na sua entrada, por favor revise o seu dado/instrução e adicione novamente!!");
-									contadorDeCond = 0;
-									IsRegistradorContar = 0;
-									IsEnderecoContar = 0;
-									break;
-								}
-							} else  {
-								IsEnderecoContar += 1;
-								console.log(IsEnderecoContar);
+							}
+							if(IsEnderecoContar == EnderecoInstrucaoDado.length) {
+								var AlertErrorColor = document.getElementById('EntradaDeInstrucao');
+								AlertErrorColor.style="border:2px solid red;";
+								alert("Ouve um erro na sua entrada, por favor revise o seu dado/instrução e adicione novamente!!");
+								contadorDeCond = 0;
+								IsRegistradorContar = 0;
+								IsEnderecoContar = 0;
+								break;
 							}
 						}
-						if(IsEnderecoContar == EnderecoInstrucaoDado.length) {
+						else  {
 							var AlertErrorColor = document.getElementById('EntradaDeInstrucao');
 							AlertErrorColor.style="border:2px solid red;";
 							alert("Ouve um erro na sua entrada, por favor revise o seu dado/instrução e adicione novamente!!");
@@ -108,35 +118,33 @@ function AdicionarComando() {
 							break;
 						}
 					}
-					else  {
-						var AlertErrorColor = document.getElementById('EntradaDeInstrucao');
-						AlertErrorColor.style="border:2px solid red;";
-						alert("Ouve um erro na sua entrada, por favor revise o seu dado/instrução e adicione novamente!!");
-						contadorDeCond = 0;
-						IsRegistradorContar = 0;
-						IsEnderecoContar = 0;
-						break;
-					}
 				}
 			}
 		}
-	}
-	if (contadorDeCond == Instrucoes.length)
-	{
-		if (parseInt(InstrucaoDecomposta[0]) == parseInt(InstrucaoDecomposta[0]) && parseInt(InstrucaoDecomposta[0]) != NaN) {
-			//adicionar e criar tag de dado
-			var AlertErrorColor = document.getElementById('EntradaDeInstrucao');
-			AlertErrorColor.style="border:2px solid green;";
-			DadosDeEntrada.push(valorDeInput);
-			console.log(DadosDeEntrada);
-			contadorDeCond = 0;
-		} else {
-			var AlertErrorColor = document.getElementById('EntradaDeInstrucao');
-			AlertErrorColor.style="border:2px solid red;";
-			alert("Ouve um erro na sua entrada, por favor revise o seu dado/instrução e adicione novamente!!");
-			contadorDeCond = 0;
+		if (contadorDeCond == Instrucoes.length)
+		{
+			if (parseInt(InstrucaoDecomposta[0]) == parseInt(InstrucaoDecomposta[0]) && parseInt(InstrucaoDecomposta[0]) != NaN) {
+				//adicionar e criar tag de dado
+				var AlertErrorColor = document.getElementById('EntradaDeInstrucao');
+				AlertErrorColor.style="border:2px solid green;";
+				DadosDeEntrada.push(valorDeInput);
+				console.log(DadosDeEntrada);
+				contadorDeEnderecosCompletos += 1;
+				AdicionarComandoNaMemoria(contadorDeEnderecosCompletos, valorDeInput);
+				contadorDeCond = 0;
+				IsRegistradorContar = 0;
+				IsEnderecoContar = 0;
+			} else {
+				var AlertErrorColor = document.getElementById('EntradaDeInstrucao');
+				AlertErrorColor.style="border:2px solid red;";
+				alert("Ouve um erro na sua entrada, por favor revise o seu dado/instrução e adicione novamente!!");
+				contadorDeCond = 0;
+				IsRegistradorContar = 0;
+				IsEnderecoContar = 0;
+			}
 		}
 	}
+	
 }
 
 function game() {
@@ -152,14 +160,14 @@ function game() {
 }
 
 // Contador de espaço na memoria
-let i = 1;
-function AdicionarComandoNaMemoria() {
-	let ValorDeCadaTabela = document.getElementById("td" + i).innerText;
-	if (ValorDeCadaTabela == "") {
-		ValorDeCadaTabela = document.getElementById("entrada").value;
-		document.getElementById("td" + i).innerText = ValorDeCadaTabela;
-		i++;
+function AdicionarComandoNaMemoria(id, Entrada) 
+{
+	ValorDeCadaTabela = document.getElementById("td" + id).innerText;
+	if (ValorDeCadaTabela == "") 
+	{
+		document.getElementById("td" + id).innerText = Entrada;
 	}
 }
+
 
 function ExecutarPercursoEmAleatorio() {}
