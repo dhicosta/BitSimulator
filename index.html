@@ -66,21 +66,20 @@
 							Iniciar
 						</li>
 						<input
-                            id="EntradaDeInstrucao"
+							id="EntradaDeInstrucao"
 							class="form-control mr-sm-2"
 							type="search"
 							placeholder="Inserir Comando"
 							aria-label="Inserir Comando"
 						/>
 						<li
-                            class="btn btn-success btn-sm mr-3"
-                            onclick="AdicionarComando()"
-                        >
-                            Adicionar
-                        </li>
-						<button class="btn btn-success btn-sm mr-3">
-							Aleatorio
-						</button>
+							class="btn btn-success btn-sm mr-3"
+							onclick="AdicionarComando()"
+						>
+							Adicionar
+						</li>
+						<button class="btn btn-success btn-sm mr-3">Aleatorio</button>
+						<button class="btn btn-success btn-sm mr-3">Reset Memory</button>
 					</form>
 				</div>
 			</nav>
@@ -165,10 +164,12 @@
 						<polygon
 							class="StyleFont"
 							points=" 500 600, 800 600, 800 800, 500 800"
-						id="UC" ></polygon>
+							id="UC"
+						></polygon>
 						<polygon
 							class="StyleFont"
 							points=" 40 600, 150 600, 175 700, 200 600, 300 600, 260 800, 90 800"
+							id="ULA"
 						></polygon>
 					</svg>
 				</div>
@@ -308,7 +309,3 @@
 		></script>
 	</body>
 </html>
-
-<div>
-	<div id="interna" class=""></div>
-</div>
