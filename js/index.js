@@ -14,6 +14,15 @@ function game() {
 	}
 }
 
-function AdicionarComandoNaMemoria() {}
+function AdicionarComandoNaMemoria() {
+	console.log("clicou");
+	let i = 1,
+		ValorDeCadaTabela = document.getElementById("td" + i).innerText;
+	while (ValorDeCadaTabela == "") {
+		ValorDeCadaTabela = document.getElementById("entrada").value;
+		document.getElementById("td" + i).innerText = ValorDeCadaTabela;
+		i++;
+	}
+}
 
 function ExecutarPercursoEmAleatorio() {}
